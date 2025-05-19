@@ -1,0 +1,87 @@
+.blind {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+    margin: -1px;
+    width: 1px;
+    height: 1px;
+}
+
+.inner {
+    max-width: 141rem;
+    margin: 0 auto;
+}
+
+
+.default {
+    padding: 6.4rem 0;
+}
+
+.default .title {
+    max-width: 141rem;
+    margin: 0 auto;
+
+}
+
+.default .title h2 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1.6rem;
+
+}
+
+.default .title p {
+    margin-bottom: 2.4rem;
+    font-size: 2.4rem;
+    white-space: nowrap;
+}
+
+.default_btn {
+    /*디폴트 버튼을 만들어놓고 계속 사용할거다.*/
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    padding: 0 24px;
+    /*top 0 right 24 bottom 0 left 24*/
+    height: 40px;
+    background: transparent;
+    color: #a32a4e;
+    border: 2px solid #a32a4e;
+
+    border-radius: 8px;
+    /*모서리 둥글게*/
+    white-space: nowrap;
+    /*글자 한줄로*/
+}
+
+
+.default_btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: -1;
+    /*색을 뒤로 보낸다.*/
+
+    height: 0;
+    background: #a32a4e;
+
+
+    transition: 0.4s;
+}
+
+.default_btn:hover {
+    color: white;
+}
+
+
+.default_btn:hover::before {
+    /*::띄우면 안된다!!*/
+    top: auto;
+    bottom: 0;
+    /*이해안된다.  top: auto;탑값을 무력화시킨다는뜻 bottom: 0;마우스작동될때탑으로*/
+    height: 100%;
+
+}
