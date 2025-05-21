@@ -7,13 +7,20 @@
     <title>STARBUCKS</title>
 
     <link rel="stylesheet" href="./lib/css/reset.css">
+    <link rel="stylesheet" href="./lib/css/cummon.css">
     <link rel="stylesheet" href="./lib/css/fonts.css">
+
+    <link rel="stylesheet" href="./lib/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./lib/css/jquery.mb.YTPlayer.min.css">
     <link rel="stylesheet" href="./lib/css/jquery.fullpage.css">
 
     <link rel="stylesheet" href="./css/layout.css">
     <link rel="stylesheet" href="./css/style.css">
 
     <script src="./lib/js/jquery-1.12.4.min.js"></script>
+
+    <script src="./lib/js/swiper-bundle.min.js"></script>
+    <script src="./lib/js/jquery.mb.YTPlayer.min.js"></script>
     <script src="./lib/js/jquery.fullpage.js"></script>
     <script src="./lib/js/gsap.min.js"></script>
 
@@ -22,130 +29,260 @@
 </head>
 
 <body>
-    <header id="header">
-        <div class="inner hd_wrap">
-            <h1>
-                <a href="/">
-                    <img src="./images/logo.png" alt="">
-                </a>
-            </h1>
 
-            <nav class="gnb">
-                <ul>
-                    <li><a href="">COFFEE</a>
-                        <ul>
-                            <li><a href="">커피</a></li>
-                            <li><a href="">커피 이야기</a></li>
-                            <li><a href="">스타벅스 리저브</a></li>
-                            <li><a href="">에스프레소 음료</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="">MENU</a>
-                        <ul>
-                            <li><a href="">음료</a></li>
-                            <li><a href="">푸드</a></li>
-                            <li><a href="">상품</a></li>
-                            <li><a href="">카드</a></li>
-                            <li><a href="">메뉴 이야기</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="">STORE</a>
-                        <ul>
-                            <li><a href="">매장 찾기</a></li>
-                            <li><a href="">드라이브 스루 매장</a></li>
-                            <li><a href="">스타벅스 리저브 매장</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="">STARBUCKS REWARDS</a>
-                        <ul>
-                            <li><a href="">스타벅스 리워드</a></li>
-                            <li><a href="">스타벅스 카드</a></li>
-                            <li><a href="">스타벅스 모바일 카드</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="">WHAT'S NEW</a>
-                        <ul>
-                            <li><a href="">이벤트</a></li>
-                            <li><a href="">뉴스</a></li>
-                            <li><a href="">공지사항</a></li>
-                            <li><a href="">월페이퍼</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
+    <div id="full_wrap">
 
-            <div class="utils">
-                <a href="">
-                    login
-                </a>
-            </div>
-        </div>
-    </header>
+        <header id="header">
 
-    <main id="content">
-
-        <section class="main_visual intro default">
             <div class="inner">
-                <div class="mockup">
-                    <figure>
-                        <img src="./images/main_visual_img01.png" alt="">
-                    </figure>
+                <h1>
+                    <a href="/">
+                        <img src="./images/logo.png" alt="">
+                    </a>
+                </h1>
+
+                <nav class="gnb">
+                    <ul>
+                        <li><a href="">COFFEE</a>
+                            <ul>
+                                <li><a href="">커피</a></li>
+                                <li><a href="">커피 이야기</a></li>
+                                <li><a href="">스타벅스 리저브</a></li>
+                                <li><a href="">에스프레소 음료</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">MENU</a>
+                            <ul>
+                                <li><a href="">음료</a></li>
+                                <li><a href="">푸드</a></li>
+                                <li><a href="">상품</a></li>
+                                <li><a href="">카드</a></li>
+                                <li><a href="">메뉴 이야기</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">STORE</a>
+                            <ul>
+                                <li><a href="">매장 찾기</a></li>
+                                <li><a href="">드라이브 스루 매장</a></li>
+                                <li><a href="">스타벅스 리저브 매장</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">STARBUCKS REWARDS</a>
+                            <ul>
+                                <li><a href="">스타벅스 리워드</a></li>
+                                <li><a href="">스타벅스 카드</a></li>
+                                <li><a href="">스타벅스 모바일 카드</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">WHAT'S NEW</a>
+                            <ul>
+                                <li><a href="">이벤트</a></li>
+                                <li><a href="">뉴스</a></li>
+                                <li><a href="">공지사항</a></li>
+                                <li><a href="">월페이퍼</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="utils">
+                    <a href="">
+                        login
+                    </a>
                 </div>
             </div>
-            <div class="slg">
-                <h2>스프링 시즌 블렌드 250g</h2>
-                <p>부드러운 코코아 풍미와 꿀처럼 은은하고 달콤한 아로마가 매력적이며<br>부담스럽지 않은 산미와 바디감을 가지고 있어 누구나 편하게 즐길 수 있습니다.</p>
-                <a href="" class="default_btn">자세히 보기</a>
+        </header>
+
+        <aside class="side_lnk">
+            <ul>
+                <li><a href="#intro">intro</a></li>
+                <li><a href="#store">store</a></li>
+                <li><a href="#customer">customer</a></li>
+                <li><a href="#menu">menu</a></li>
+            </ul>
+        </aside>
+
+        <section id="main_intro" class="section default">
+            <div class="wrap">
+                <div class="swiper main_intro_slide">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide slide-bg01 itm">
+                            <div class="inner">
+                                <div class="left">
+                                    <figure>
+                                        <img src="./images/main_visual_img01.png" alt="">
+                                    </figure>
+                                </div>
+                                <div class="right">
+                                    <div class="title">
+                                        <h2 class="serif">스프링 시즌 블렌드 250g</h2>
+                                        <p>
+                                            부드러운 코코아 풍미와 꿀처럼 은은하고 달콤한 아로마가 매력적이며<br>
+                                            부담스럽지 않은 산미와 바디감을 가지고 있어 누구나 편하게 즐길 수 있습니다.
+                                        </p>
+                                        <a href="" class="default_btn lnk">자세히 보기</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide slide-bg02 itm">
+                            <div class="inner">
+                                <div class="left">
+                                    <figure>
+                                        <img src="./images/main_visual03_img03.png" alt="">
+                                    </figure>
+                                </div>
+                                <div class="right">
+                                    <div class="title">
+                                        <h2 class="serif">콜롬비아 나리뇨 250g</h2>
+                                        <p>
+                                            안데스 산맥과 아마존 우림의 영향을 받아 생산된 특별한 콜롬비아 나리뇨는<br>
+                                            스타벅스만의 전문적인 로스팅을 통해 풍부하고 고급스러운 헤이즐넛의<br>
+                                            고소한 풍미를 느낄
+                                        </p>
+                                        <a href="" class="default_btn w lnk">자세히 보기</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide slide-bg03 itm">
+                            <div class="inner">
+                                <div class="left">
+                                    <figure>
+                                        <img src="./images/main_store_img01.jpg" alt="">
+                                    </figure>
+                                </div>
+                                <div class="right">
+                                    <div class="title">
+                                        <h2 class="serif">스프링 시즌 블렌드 250g</h2>
+                                        <p>
+                                            부드러운 코코아 풍미와 꿀처럼 은은하고 달콤한 아로마가 매력적이며<br>
+                                            부담스럽지 않은 산미와 바디감을 가지고 있어 누구나 편하게 즐길 수 있습니다.
+                                        </p>
+                                        <a href="" class="default_btn x lnk">자세히 보기</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page"></div>
+
             </div>
         </section>
 
-        <section class="main_banner default">
+        <section id="main_reserve" class="section default">
             <div class="inner">
+                <div class="title">
+                    <h2>RESERVE MAGAZIN</h2>
+                    <p>
+                        Flight to Your Reserve : 리저브 오텀, 향기로운 가을을 위하여<br>
+                        <span>일반적으로 우리가 시트러스 향수를 사랑하는 가장 큰 이유는<br>
+                            바로 청량감입니다. 평소 시트러스 향을 좋아한다면<br>
+                            수마트라 크린치는 경험해 보세요.</span>
+                    </p>
+                    <a href="" class="default_btn lnk">자세히 보기</a>
+                </div>
+                <div class="reserve_visual">
+                    <img src="./images/main_reserve01.jpg" alt="">
+                </div>
+            </div>
+        </section>
+
+        <section id="main_banner" class="section default">
+            <div class="inner">
+                <div class="reserve_visual">
+                    <img src="./images/main_banner_img01.png" alt="">
+                </div>
                 <div class="title">
                     <h2>PICK YOUR FAVORITE</h2>
-                    <p>다양한 메뉴를 스타벅스에서 즐겨보세요.<br>
-                        <span>스타벅스만의 특별함을 경험할 수 있는 최상의 선택 음료,<br>스타벅스 커피와 완벽한 어울림을 자랑하는 푸드,<br> 다양한 시도와 디자인으로
-                            가치를 더하는 상품, <br>소중한 사람에게 마음을 전하는 가장 좋은 방법 스타벅스 카드</span>
+                    <p>
+                        스타벅스에서 만나는 다양한 메뉴를 스타벅스에서 즐겨보세요.<br>
+                        <span>
+                            스타벅스만의 특별함을 경험할 수 있는 최상의 선택 음료<br>
+                            스타벅스 커피와 완벽한 어울림을 자랑하는 푸드<br>
+                            다양한 시도와 디자인으로 가치를 더하는 상품<br>
+                        </span>
                     </p>
-                    <a href="" class="default_btn">자세히 보기</a>
-                </div>
-                <div class="mockup">
-                    <figure>
-                        <img src="./images/main_banner_img01.png" alt="">
-                    </figure>
+                    <a href="" class="default_btn lnk">자세히 보기</a>
                 </div>
             </div>
         </section>
 
-        <section class="store_wrap default">
-            <div class="inner">
-                <div class="store_wrap_img">
-                    <figure class="main-img">
-                        <img src="./images/store_wrap02.png" alt="">
-                    </figure>
-                    <figure class="overlay-img">
-                        <img src="./images/store_wrap01" alt="">
-                    </figure>
+        <section id="main_menu" class="section default">
+            <div class="title">
+                <h2 class="serif">STARBUCKS MENU</h2>
+                <p>바리스타의 숙련된 기술로 취향까지 담은 음료를 경험해 보세요.</p>
+            </div>
 
-
-                </div>
-
-                <div class="title">
-                    <h2>전국 어디에서나 스타벅스와 함께!</h2>
-                    <p>스타벅스와 함께 커피 한잔의 여유를 가져보세요.<br>
-                        <span>나의 취향이 머무는 곳, 스타벅스 리저브 매장<br>더욱 편리하게 스타벅스를 만나보는 드라이브 스루 매장<br>함께하는 더 따뜻한 지역사회 소통 공간, 커뮤니티
-                            스토어까지.<br>다양한 스타벅스 매장이 여러분을 기다립니다.</span>
-                    </p>
-                    <a href="" class="default_btn">매장 찾기</a>
+            <div class="menu_wrap">
+                <div class="swiper main_menu_slide">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide itm">
+                            <figure>
+                                <img src="./images/main_menu01.jpg" alt="">
+                            </figure>
+                            <div class="txt">
+                                <strong>베르가못 콜드브루</strong>
+                                <p>은은하게 퍼지는 화사하고 우아한<br>시트러스 맛이 느껴지는 부드러운 콜드 브루</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide itm">
+                            <figure>
+                                <img src="./images/main_menu02.jpg" alt="">
+                            </figure>
+                            <div class="txt">
+                                <strong>스모크드 콜드 패션드</strong>
+                                <p>스모키한 풍미의 리저브 커피가 어우러진<br>칵테일처럼 즐기는 콜드 브루 음료</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide itm">
+                            <figure>
+                                <img src="./images/main_menu03.jpg" alt="">
+                            </figure>
+                            <div class="txt">
+                                <strong>나이트로 바닐라 크림</strong>
+                                <p>부드러운 목넘김의 나이트로 커피와<br>바닐라 크림의 매력을 한번에 느껴보세요!</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide itm">
+                            <figure>
+                                <img src="./images/main_menu04.jpg" alt="">
+                            </figure>
+                            <div class="txt">
+                                <strong>바닐라 크림 콜드 브루</strong>
+                                <p>바닐라 크림으로 깔끔하면서<br>달콤함을 즐길 수 있는 음료입니다.</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide itm">
+                            <figure>
+                                <img src="./images/main_menu05.jpg" alt="">
+                            </figure>
+                            <div class="txt">
+                                <strong>막걸리향 크림 콜드 브루</strong>
+                                <p>산에서 만날 수 있는 특별한 경험을 모티브로해<br>막걸리 향을 즐길 수 있는 콜드 브루</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide itm">
+                            <figure>
+                                <img src="./images/main_menu06.jpg" alt="">
+                            </figure>
+                            <div class="txt">
+                                <strong>콜드 브루</strong>
+                                <p>스타벅스 바리스타의 정성으로 만들어진 콜드브루!<br>부드러운 산미와 깊은 바디감의 초콜릿 풍미 커피</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-    </main>
+        <footer id="footer" class="section fp-auto-height--">
+            footer
+        </footer>
 
-    <footer id="footer">
-
-    </footer>
+    </div>
 </body>
 
 </html>

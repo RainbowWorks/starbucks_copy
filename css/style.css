@@ -1,7 +1,7 @@
 :root {
-    --primary-color: #09847f;
+    --primary-color: #00704a;
     /*root는 저 위에 있다는 뜻, --primary-color 중요한컬러*/
-    --secondary-color: #B4613D;
+    --secondary-color: ##fff;
 
     --body-color: #333333;
 
@@ -22,30 +22,39 @@ body {
 }
 
 #header {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 999;
-    background: var(--white-color);
-    border-bottom: 2px solid var(--line-color);
+
 }
 
-#header .hd_wrap {
+
+#header .inner {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    height: 12rem;
+    height: 9.6rem;
 }
 
-#header .hd_wrap h1 img {}
 
 #header h1 {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-27px, -50%);
 }
+
+
+#header.on {
+    display: block;
+    border-bottom: 2px solid #ddd;
+    background: #fff;
+}
+
 
 #header .gnb>ul {
     display: flex;
@@ -54,7 +63,7 @@ body {
 
 #header .gnb>ul>li>a {
     display: block;
-    line-height: 12rem;
+    line-height: 14rem;
 }
 
 #header .gnb>ul>li {
@@ -100,124 +109,298 @@ body {
     border-top: 1px solid var(--line-color);
 }
 
-
-.main_visual {
-    position: relative;
-    background: url(../images/main_visual01.png) no-repeat center center/cover;
-    height: calc(100vh - 12rem);
-}
-
-
-
-.main_visual figure {
-    position: absolute;
+.side_lnk {
+    position: fixed;
     top: 50%;
-    left: 13%;
+    right: 80px;
     transform: translate(0, -50%);
+    z-index: 999;
 }
 
-.main_visual .slg {
+* {
+    outline: 2px solid tomato;
+}
+
+#main_intro {
+    position: relative;
+}
+
+
+
+#main_intro .swiper-wrapper,
+#main_intro .swiper-slide {
+    height: calc(100vh - 9.6rem);
+}
+
+#main_intro .slide-bg01 {
+    background: url(../images/main_visual01.png) no-repeat center center/cover;
+
+}
+
+#main_intro .slide-bg02 {
+    background: url(../images/main_visual03.png) no-repeat center center/cover;
+}
+
+#main_intro .slide-bg03 {
+    background: url(../images/main_visual04.png) no-repeat center center/cover;
+}
+
+#main_intro .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#main_intro {}
+
+#main_intro .inner {
+    display: flex;
+    align-items: center;
+    gap: 8rem;
+
+}
+
+#main_intro .inner>* {
+    flex: 1;
+}
+
+#main_intro .left figure {
+    overflow: hidden;
+}
+
+#main_intro .itm figure {
+    opacity: 0;
+    transform: translate(0, 100px);
+    transition: 0.4s 1s;
+}
+
+#main_intro .itm.swiper-slide-active figure {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+
+#main_intro .itm .title {
+    opacity: 0;
+    transform: translate(0, 100px);
+    transition: 0.6s 1s;
+}
+
+#main_intro .itm.swiper-slide-active .title {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+
+
+
+#main_intro .slide-bg01 .title {
     color: #a32a4e;
+}
+
+#main_intro .slide-bg02 .title {
+    color: #fff;
+}
+
+#main_intro .slide-bg03 .title {
+    color: #ba6e36;
+}
+
+#main_intro .slg .lnk {
+    margin-top: 40px;
+}
+
+
+#main_intro .page {
+    /*도트 내맘대로 바꾸기*/
+    display: flex;
+    justify-content: center;
+
+    /*도트 사진위로 올리기*/
     position: absolute;
-    top: 50%;
-    left: 67%;
-    transform: translate(-50%, -50%);
+    bottom: 56px;
+    left: 0;
+    right: 0;
+    z-index: 3;
 }
 
-.main_visual .slg h2 {
-    font-size: 4rem;
-    font-weight: 700;
-    margin-bottom: 1.6rem;
+#main_intro .page span {
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 8px;
+    /*높이의 반만큼 설정하면된다.*/
+    opacity: 1;
+    /*opacity도트흐린거진하게*/
+    transition: 0.4s;
+    box-shadow: 0 0 2px #000;
 }
 
-.main_visual .slg p {
-    margin-bottom: 2.4rem;
-    font-size: 2.4rem;
+#main_intro .page span.swiper-pagination-bullet-active {
+    width: 80px;
+    background: var(--primary-color);
+}
+
+
+#main_reserve {
+    overflow: hidden;
+    position: relative;
+}
+
+
+#main_reserve .inner {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+    gap: 8rem;
+}
+
+#main_reserve .inner>* {
+    flex: 1;
+}
+
+#main_reserve .title p {
+
+    font-size: 2rem;
+    line-height: 2.4rem;
     white-space: nowrap;
 }
 
-
-
-.main_visual .inner .figure {
-    /* 애니메이션만들거다. */
-    transform: translate(0, -120%);
-    opacity: 0;
-}
-
-.main_visual.on .inner .figure {
-    /* 애니메이션만들거다. */
-    transform: translate(0, 0);
-    opacity: 1;
-    transition: 0.4s;
-
-}
-
-
-.main_visual .inner .slg {
-    /* 애니메이션만들거다. */
-    transform: translate(0, 120px);
-    opacity: 0;
-}
-
-.main_visual.on .inner .slg {
-    /* 애니메이션만들거다. */
-    transform: translate(0, 0);
-    opacity: 1;
-    transition: 0.4s 0.4s;
-}
-
-.main_banner {
-    position: relative;
-    background: url(../images/main_banner01.png) no-repeat center center/cover;
-    background-attachment: fixed;
-
-}
-
-.main_banner .inner {
-    display: flex;
-    justify-content: space-between;
-}
-
-.main_banner .title {
-    position: relative;
-    color: var(--white-color);
-    margin: 0;
-}
-
-.main_banner .title p {}
-
-.main_banner .title p span {
-    margin-top: 1.6rem;
+#main_reserve .title p span {
     display: block;
+    margin-bottom: 4rem;
     font-size: 1.6rem;
-    line-height: 1.6;
+    margin-top: 1.6rem;
+}
+
+#main_reserve .reserve_visual img {
+    border-radius: 24px;
 }
 
 
-
-.main_banner .default_btn {
+#main_reserve .default_btn {
     position: relative;
     /*디폴트 버튼을 만들어놓고 계속 사용할거다.*/
     display: inline-flex;
+    z-index: 1;
     align-items: center;
     font-weight: 500;
-    padding: 0 24px;
+    padding: 0 2.4rem;
     /*top 0 right 24 bottom 0 left 24*/
-    height: 40px;
+    height: 4rem;
     background: transparent;
-    color: var(--white-color);
-    border: 2px solid var(--white-color);
+    color: #333;
+    border: 2px solid #333;
 
-    border-radius: 8px;
+    /* border-radius: 20px; */
     /*모서리 둥글게*/
     white-space: nowrap;
+    overflow: hidden;
     /*글자 한줄로*/
-    z-index: 1;
+}
+
+
+#main_reserve .default_btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: -1;
+    /*색을 뒤로 보낸다.*/
+
+    height: 0;
+    background: #333;
+
+
+    transition: 0.4s;
+}
+
+#main_reserve .default_btn:hover {
+    color: white;
+}
+
+
+#main_reserve .default_btn:hover::before {
+    /*::띄우면 안된다!!*/
+    top: auto;
+    bottom: 0;
+    /*이해안된다.  top: auto;탑값을 무력화시킨다는뜻 bottom: 0;마우스작동될때탑으로*/
+    height: 100%;
+
+}
+
+#main_banner {
+    position: relative;
+    background: url(../images/main_banner01.png) no-repeat center center/cover;
+    background-attachment: fixed;
+}
+
+
+#main_banner .inner {
+    display: flex;
+    gap: 8rem;
+    align-items: center;
+}
+
+#main_banner .inner>* {
+    flex: 1;
+}
+
+#main_banner .title {
+    color: #fff;
+
+}
+
+
+#main_banner .title h2 {
+    text-shadow: 0 0 2px #000;
+}
+
+#main_banner .title p {
+
+    font-size: 2rem;
+    line-height: 2.4rem;
+    white-space: nowrap;
+    text-shadow: 0 0 2px #000;
+}
+
+#main_banner .title p span {
+    display: block;
+    margin-bottom: 4rem;
+    font-size: 1.6rem;
+    margin-top: 1.6rem;
+    text-shadow: 0 0 2px #000;
 }
 
 
 
-.main_banner .default_btn::before {
+#main_banner .default_btn {
+    position: relative;
+    /*디폴트 버튼을 만들어놓고 계속 사용할거다.*/
+    display: inline-flex;
+    z-index: 1;
+    align-items: center;
+    font-weight: 500;
+    padding: 0 2.4rem;
+    /*top 0 right 24 bottom 0 left 24*/
+    height: 4rem;
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+
+    /* border-radius: 20px; */
+    /*모서리 둥글게*/
+    white-space: nowrap;
+    overflow: hidden;
+    /*글자 한줄로*/
+}
+
+
+#main_banner .default_btn::before {
     content: "";
     position: absolute;
     top: 0;
@@ -234,14 +417,12 @@ body {
     transition: 0.4s;
 }
 
-
-.main_banner .default_btn:hover {
+#main_banner .default_btn:hover {
     color: #333;
 }
 
 
-
-.main_banner .default_btn:hover::before {
+#main_banner .default_btn:hover::before {
     /*::띄우면 안된다!!*/
     top: auto;
     bottom: 0;
@@ -250,131 +431,62 @@ body {
 
 }
 
-.store_wrap {
+#main_menu .title {
+    text-align: center;
+}
+
+
+#main_menu .main_menu_slide .itm {
     position: relative;
-    background: var(--backgroud-color);
+    margin: 0 auto;
 
-
-
-}
-
-.store_wrap .inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.store_wrap .store_wrap_img figure {
-
-    flex: 1;
-    margin: 0;
-}
-
-.store_wrap .store_wrap_img img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-
-.store_wrap .store_wrap_img {
-    position: relative;
-    /* ✅ 기준이 되는 부모 */
-    width: 600px;
-    /* 원하는 사이즈로 조정 */
-    height: auto;
-}
-
-.store_wrap .store_wrap_img .main-img {
-    width: 60%;
-}
-
-.store_wrap .store_wrap_img .main-img img {
-    width: 100%;
-    display: block;
-}
-
-.store_wrap .store_wrap_img .overlay-img {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 60%;
-    /* 겹치는 이미지 크기 비율 조정 */
-}
-
-.store_wrap .store_wrap_img .overlay-img img {
-    width: 70%;
-    display: block;
-}
-
-.store_wrap .title {
-    flex: 1;
-    text-align: right;
-}
-
-.store_wrap .default_btn {
-    position: relative;
-    /*디폴트 버튼을 만들어놓고 계속 사용할거다.*/
-    display: inline-flex;
-    align-items: center;
-    font-weight: 500;
-    padding: 0 24px;
-    /*top 0 right 24 bottom 0 left 24*/
-    height: 40px;
-    background: transparent;
-    color: var(--body-color);
-    border: 2px solid var(--body-color);
-
-    border-radius: 8px;
-    /*모서리 둥글게*/
-    white-space: nowrap;
-    /*글자 한줄로*/
-    z-index: 1;
-}
-
-
-
-.store_wrap .default_btn::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-
-    z-index: -1;
-    /*색을 뒤로 보낸다.*/
-
-    height: 0;
-    background: var(--body-color);
-
+    border-radius: 0;
+    overflow: hidden;
 
     transition: 0.4s;
 }
 
-
-.store_wrap .default_btn:hover {
-    color: var(--white-color);
+#main_menu .main_menu_slide .itm.swiper-slide-active {
+    border-radius: 40px;
 }
 
-
-
-.store_wrap .default_btn:hover::before {
-    /*::띄우면 안된다!!*/
-    top: auto;
-    bottom: 0;
-    /*이해안된다.  top: auto;탑값을 무력화시킨다는뜻 bottom: 0;마우스작동될때탑으로*/
-    height: 100%;
-
+#main_menu .main_menu_slide .itm .txt {
+    position: absolute;
+    left: 32px;
+    bottom: 40px;
+    text-shadow: 0 0 2px #000;
 }
 
-@media (max-width: 768px) {
-    .store_wrap .inner {
-        flex-direction: column;
-    }
+#main_menu .main_menu_slide .itm .txt em {
+    display: block;
+    margin-bottom: 8px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 24px;
+}
 
-    .store_wrap .store_wrap_img {
-        flex-direction: column;
-    }
+#main_menu .main_menu_slide .itm .txt strong {
+    display: block;
+    margin-bottom: 16px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: 800;
+}
+
+#main_menu .main_menu_slide .itm .txt p {
+    color: #fff;
+}
+
+#main_menu .main_menu_slide .itm figure {
+    position: relative;
+    filter: grayscale(0.5);
+    /* filter: grayscale(1); 흑백 */
+}
+
+#main_menu .main_menu_slide .itm.swiper-slide-active figure {
+    position: relative;
+    filter: grayscale(0);
+    /* filter: grayscale(0); 흑백 없어진다. swiper-slide-active검사해서 이름 가져오면됨 */
 }
 
 #footer {
@@ -382,6 +494,6 @@ body {
 }
 
 
-/* * {
+/* * { 
     outline: 1px solid tomato;
 }*/

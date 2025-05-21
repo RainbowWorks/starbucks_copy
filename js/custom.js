@@ -1,38 +1,68 @@
+
+
 $(function () {
 
     // h2오고 p나오도록 하는 명령어
     let tl = gsap.timeline();
 
-    // intro에 뭘 할거다. to 1000으로 가라 from 1000에서 와라. x를 1000으로
-    tl.from('.intro figure', { x: 1000, opacity: 0 })
-    tl.from('.intro h2', { x: 1000, opacity: 0 })
-    tl.from('.intro p', { x: 1000, opacity: 0 })
-    tl.from('.intro a', { x: 1000, opacity: 0 })
+    tl.from({}, {})
+    tl.from('#main_reserve img', { y: 140, opacity: 0 });
+    tl.from('#main_reserve h2', { y: 140, opacity: 0 });
+    tl.from('#main_reserve  p', { y: 140, opacity: 0 });
+    tl.from('#main_reserve  a', { y: 140, opacity: 0 });
 
+    const slide = new Swiper('.main_intro_slide', {
+        autoplay: {
+            delay: 3000, // autoplay 설정은 객체로 수정
+            disableOnInteraction: false
+        },
+        speed: 1500,
+        loop: true,
 
-    $('.full_wrap').fullpage({
-        // navigation: true, 옵션 적으면 옆에 점이 찍힌다.
-        anchors: ['intro', 'portfolio01', 'portfolio02', 'portfolio03', 'profile'],
-        // 이동할때마다 html뒤에 이름이 붙는다.
+        pagination: {
+            el: '.page',
+            clickable: true, /*클릭안되면 쓰면된다.*/
+        },/*도트만들때필요함*/
 
-        // 지금부터 조금 어렵다!!!
-        afterLoad: function (a, b) {
-            console.log(a, b);
-            $('.gnb ul li').removeClass('on');
-            $('.gnb ul li').eq(b - 1).addClass('on');
+    })
 
-            $('.section').removeClass('on');
-            $('.section').eq(b - 1).addClass('on');
+    $('#full_wrap').fullpage({
+        fixedElements: '#header , .side_lnk, .to_top',
+        paddingTop: '96px',
+        anchors: ['intro', 'store', 'customer', 'menu'],
+        css3: false,
 
-            // b가 1과 같으면
-            if (b === 1) {
+        onLeave: function (o, d, dr) {
+            if (d == 2) {
                 tl.restart();
             }
+            if (d == 2 || d == 3 || d == 4) {
+                $('#header').addClass('on')
+            } else {
+                $('#header').removeClass('on')
+            }
         },
-        // 이 페이지에 왔을 때 afterLoad
-        // a는 타겟이름 b는 번호
+        // 헤더 아래 내려갔을때 고정시키는 방법 onleave ~떠날 때, 떠났던 자리, 떠날때 가는거? 해당 번호가 찍히는 것?  떠나올자리, 한자리, 방향 순서...????
+        // d== 조건문
     });
 
-
+    const main_menu_slide = new Swiper('.main_menu_slide', {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 3,
+        loop: true,
+        coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 100,
+            modifier: 2,
+            slideShadows: true,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+        },
+    });
 
 });
+
