@@ -109,6 +109,149 @@ body {
     border-top: 1px solid var(--line-color);
 }
 
+#header .utils {
+    font-size: 1.4rem;
+    display: flex;
+    gap: 2.4rem;
+    /* 원하는 간격(px, rem 등 단위 가능) */
+}
+
+#header .utils a {
+    position: relative;
+
+}
+
+#header .utils a:not(:first-child)::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 1px;
+    height: 0.5em;
+    background: #aaa;
+
+    top: 50%;
+    left: -12px;
+    transform: translate(0, -50%);
+
+}
+
+.mbtn {
+    display: none;
+}
+
+@media (max-width: 1442px) {
+
+    /* 양쪽에 줄여도 붙는 공간 없애겠다 해서 1442px */
+    #header .inner {
+        margin: 0 16px;
+    }
+}
+
+@media (max-width:768px) {
+    #header .utils {
+        display: none;
+    }
+
+    .gnb {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        z-index: 999;
+
+        background: #fff;
+        border-right: 1px solid #ddd;
+
+        height: 200vh;
+        width: calc(100% - 80px);
+
+        padding: 120px 24px 0 24px;
+    }
+
+    .gnb.on {
+        /* 반응형 */
+        left: 0;
+    }
+
+    #header .hamburger {
+        padding: 0 0;
+    }
+
+    #header .hamburger-box {
+        width: 32px;
+    }
+
+    #header .hamburger-inner,
+    #header .hamburger-inner::before,
+    #header .hamburger-inner::after {
+        width: 32px;
+        height: 2px;
+
+    }
+
+
+    #header .gnb>ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+
+
+    #header .gnb>ul>li {
+        position: relative;
+    }
+
+    #header .gnb>ul>li>a {
+        line-height: 4rem;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #header .gnb>ul>li>ul {
+        position: static;
+        transform: translate(0, 0);
+        visibility: visible;
+        opacity: 1;
+        transition: none;
+
+        display: none;
+        padding: 0 0;
+    }
+
+    #header .gnb>ul>li:hover ul {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        transform: translate(0, 0);
+    }
+
+    #header .gnb>ul>li:focus-within ul {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(0, 0);
+    }
+
+    #header .gnb>ul>li>ul a {
+        background: #f9f9f9;
+
+    }
+
+    #header .gnb>ul>li>ul li~li a {
+        border-top: 1px solid var(--line-color);
+    }
+
+    .mbtn {
+        /* 반응형 */
+        display: block;
+        position: fixed;
+        top: 40px;
+        right: 16px;
+        z-index: 999;
+    }
+
+    .side_lnk {
+        display: none;
+    }
+}
+
 .side_lnk {
     position: fixed;
     top: 50%;
@@ -117,8 +260,24 @@ body {
     z-index: 999;
 }
 
-* {
-    outline: 2px solid tomato;
+.side_lnk li~li {
+    margin-top: 8px;
+}
+
+.side_lnk li a {
+    display: block;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    border: 3px solid #ddd;
+    font-size: 0;
+
+    background: #fff url(../images/favicon.png) no-repeat center center/1.4rem;
+}
+
+.side_lnk li.on a {
+    border: 2px solid #00704a;
+    /* background-color: #ddd; */
 }
 
 #main_intro {
@@ -137,6 +296,7 @@ body {
 
 }
 
+
 #main_intro .slide-bg02 {
     background: url(../images/main_visual03.png) no-repeat center center/cover;
 }
@@ -152,12 +312,13 @@ body {
 }
 
 
-#main_intro {}
-
 #main_intro .inner {
     display: flex;
     align-items: center;
     gap: 8rem;
+    max-width: 1410px;
+    margin: 0 auto;
+    width: 100%;
 
 }
 
@@ -191,9 +352,6 @@ body {
     opacity: 1;
     transform: translate(0, 0);
 }
-
-
-
 
 #main_intro .slide-bg01 .title {
     color: #a32a4e;
@@ -336,13 +494,24 @@ body {
 #main_banner {
     position: relative;
     background: url(../images/main_banner01.png) no-repeat center center/cover;
-    background-attachment: fixed;
+
+}
+
+#main_banner::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 0 0;
+    /*  top: 0; bottom: 0;top: 0; bottom: 0;찢는다.left: 0; right: 0; inset: 0 0 0 0; 좌표 4개를 한번에 사용.*/
+    background: #000;
+    opacity: 0.5;
+    /*  opacity: 0.5; 투명해지게 */
 }
 
 
 #main_banner .inner {
+    position: relative;
     display: flex;
-    gap: 8rem;
+
     align-items: center;
 }
 
@@ -352,7 +521,11 @@ body {
 
 #main_banner .title {
     color: #fff;
+    text-align: right;
+}
 
+#main_banner .reserve_visual {
+    flex: 1.5;
 }
 
 
@@ -431,6 +604,8 @@ body {
 
 }
 
+#main_menu {}
+
 #main_menu .title {
     text-align: center;
 }
@@ -447,40 +622,44 @@ body {
 }
 
 #main_menu .main_menu_slide .itm.swiper-slide-active {
-    border-radius: 40px;
+    border-radius: 5rem;
 }
 
 #main_menu .main_menu_slide .itm .txt {
     position: absolute;
-    left: 32px;
-    bottom: 40px;
+    left: 6.4rem;
+    bottom: 6.4rem;
     text-shadow: 0 0 2px #000;
-}
 
-#main_menu .main_menu_slide .itm .txt em {
-    display: block;
-    margin-bottom: 8px;
-    color: #fff;
-    font-size: 18px;
-    line-height: 24px;
 }
 
 #main_menu .main_menu_slide .itm .txt strong {
     display: block;
-    margin-bottom: 16px;
+    margin-bottom: 1.6rem;
     color: #fff;
-    font-size: 40px;
+    font-size: 3.2rem;
     font-weight: 800;
 }
 
 #main_menu .main_menu_slide .itm .txt p {
     color: #fff;
+    font-size: 1.4rem;
 }
 
 #main_menu .main_menu_slide .itm figure {
     position: relative;
-    filter: grayscale(0.5);
-    /* filter: grayscale(1); 흑백 */
+    /* filter: grayscale(0.3); */
+}
+
+#main_menu .main_menu_slide .itm.swiper-slide-active figure {
+    filter: grayscale(0);
+}
+
+#main_menu .main_menu_slide .itm figure::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 0 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.5) 80%);
 }
 
 #main_menu .main_menu_slide .itm.swiper-slide-active figure {
@@ -489,11 +668,175 @@ body {
     /* filter: grayscale(0); 흑백 없어진다. swiper-slide-active검사해서 이름 가져오면됨 */
 }
 
+/* #main_menu.menu-fade>*:not(.background) { 
+    opacity: 0;
+    pointer-events: none;
+}
+
+#main_menu.menu-fade {
+    transition: opacity 0.5s;
+}*/
+
 #footer {
-    height: 12rem;
+    position: relative;
+    background: #333;
+    text-align: center;
+    padding-top: 0 !important;
+}
+
+#footer .inner {
+    padding: 8rem 0 8rem 0;
 }
 
 
-/* * { 
+#footer .ft_customer {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 1.6rem;
+}
+
+#footer .logo_img {
+    margin-bottom: 4rem;
+}
+
+#footer .ft_top {
+    background: #00704a;
+
+}
+
+#footer .ft_top h2 {
+    color: #fff;
+    margin-bottom: 1.6rem;
+    font-size: 3.2rem;
+    font-weight: 600;
+}
+
+#footer .ft_top p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    color: #fff;
+    font-size: 15px;
+    line-height: 24px;
+}
+
+#footer .ft_top .lnk {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+#footer .ft_top .lnk .join:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+
+#footer .ft_top .lnk .login:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+
+
+#footer .ft_bottom .ft_customer li {
+    position: relative;
+    color: var(--white-color);
+}
+
+#footer .ft_bottom .ft_customer li~li::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    transform: translate(0, -50%);
+    width: 1px;
+    height: 0.5em;
+    background: #aaa;
+}
+
+
+
+#footer .ft_bottom p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    color: #fff;
+    font-size: 15px;
+    line-height: 24px;
+}
+
+#footer .ft_bottom p span {
+    /*사이사이 바를 넣어줄거다*/
+    position: relative;
+}
+
+#footer .ft_bottom p span~span::before {
+    content: "";
+    /*content는 필수*/
+    position: absolute;
+    top: 50%;
+    left: -16px;
+    width: 1px;
+    height: 0.5em;
+
+    background: #ddd;
+
+    transform: translate(0, -50%);
+    /*transform 쓰기 싫으면 top 8px, bottom 8px바꿔주고 tf빼면됨*/
+}
+
+#footer .ft_bottom address {
+    color: #fff;
+    margin-top: 1.6rem;
+    font-size: 12px;
+    line-height: 24px;
+}
+
+
+
+#footer .default_btn {
+    margin-top: 3.2rem;
+    position: relative;
+    /*디폴트 버튼을 만들어놓고 계속 사용할거다.*/
+    display: inline-flex;
+    z-index: 1;
+    align-items: center;
+    font-weight: 500;
+    padding: 0 2.4rem;
+    /*top 0 right 24 bottom 0 left 24*/
+    height: 4rem;
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+
+    /* border-radius: 20px; */
+    /*모서리 둥글게*/
+    white-space: nowrap;
+    overflow: hidden;
+    /*글자 한줄로*/
+}
+
+
+#footer .default_btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: -1;
+    /*색을 뒤로 보낸다.*/
+
+    height: 0;
+    background: transparent;
+
+
+    transition: 0.4s;
+}
+
+
+/* * {
     outline: 1px solid tomato;
 }*/

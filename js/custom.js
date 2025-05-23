@@ -13,10 +13,10 @@ $(function () {
 
     const slide = new Swiper('.main_intro_slide', {
         autoplay: {
-            delay: 3000, // autoplay 설정은 객체로 수정
+            delay: 3000,
             disableOnInteraction: false
         },
-        speed: 1500,
+        speed: 1000,
         loop: true,
 
         pagination: {
@@ -29,8 +29,14 @@ $(function () {
     $('#full_wrap').fullpage({
         fixedElements: '#header , .side_lnk, .to_top',
         paddingTop: '96px',
-        anchors: ['intro', 'store', 'customer', 'menu'],
-        css3: false,
+        anchors: ['intro', 'store', 'customer', 'menu', 'footer'],
+
+        afterLoad: function (o, d, dr) {
+
+            $('.side_lnk li').removeClass('on')
+            $('.side_lnk li').eq(d - 1).addClass('on')
+        },
+
 
         onLeave: function (o, d, dr) {
             if (d == 2) {
@@ -50,12 +56,12 @@ $(function () {
         effect: "coverflow",
         grabCursor: true,
         centeredSlides: true,
-        slidesPerView: 3,
+        slidesPerView: 3.5,
         loop: true,
         coverflowEffect: {
             rotate: 0,
             stretch: 0,
-            depth: 100,
+            depth: 120,
             modifier: 2,
             slideShadows: true,
         },
@@ -64,5 +70,33 @@ $(function () {
         },
     });
 
+    //  푸터 섹션이 보이면 헤더 숨기기
+    const header = document.querySelector('#header');
+    const mainMenu = document.querySelector('#main_menu');
+    const footer = document.querySelector('#footer');
+
+    const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+            // 푸터 보이면 둘 다 숨김
+            header.style.display = 'none';
+            mainMenu.classList.add('menu-fade');
+        } else {
+            header.style.display = 'block';
+            mainMenu.classList.remove('menu-fade');
+        }
+    }, {
+        threshold: 0.5
+    });
+
+    observer.observe(footer);
+
 });
 
+$(function () {
+    $('.mbtn').on('click', function () {
+        $(this).toggleClass('is-active')
+        $('.gnb').toggleClass('on')
+        /*active를 붙여도 된다. 일반적으로는 on 사용한다.*/
+        $('#header h1').toggleClass('on')
+    })
+});
